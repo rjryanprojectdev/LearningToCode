@@ -8,6 +8,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		System.out.println("Hey");
+
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }
