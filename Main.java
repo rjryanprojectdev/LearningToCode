@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-public class Main{
-
-    public static void main(String[] args) {
-        System.out.println("Hello, World");
-    }
-=======
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
