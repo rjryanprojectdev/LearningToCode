@@ -2,32 +2,59 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class Main extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
+
+	private TiledMap gameMap;
+	private AssetManager manager;
+	private OrthographicCamera viewPort;
+	private OrthogonalTiledMapRenderer renderer;
+
+	private int TILEWIDTH, TILEHEIGHT, MAPWIDTH_TILES, MAPHEIGHT_TILES, MAPWIDTH_PIXELS, MAPHEIGHT_PIXELS;
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("core/assets/badlogic.jpg");
+		manager = new AssetManager();
+		manager.setLoader(TiledMap.class, new TmxMapLoader());
+		manager.load("core/assets/test_map.tmx", TiledMap.class);
+		manager.finishLoading();
+
+		gameMap = manager.get("core/assets/test_map.tmx", TiledMap.class);
+
+		MapProperties properties = gameMap.getProperties();
+		TILEWIDTH = properties.get("tilewidth", Integer.class);
+		TILEHEIGHT = properties.get("tileheight", Integer.class);
+		MAPWIDTH_TILES = properties.get("width", Integer.class);
+		MAPHEIGHT_TILES = properties.get("height", Integer.class);
+		MAPWIDTH_PIXELS = MAPWIDTH_TILES * TILEWIDTH;
+		MAPHEIGHT_PIXELS = MAPHEIGHT_TILES * TILEHEIGHT;
+
+		viewPort = new OrthographicCamera(960.f, 540.f);
+		viewPort.position.x = MAPWIDTH_PIXELS * 0.5f;
+		viewPort.position.y = MAPHEIGHT_PIXELS * 0.5f;
+
+		renderer = new OrthogonalTiledMapRenderer(gameMap);
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(.5f, .7f, .9f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+
+		viewPort.update();
+		renderer.setView(viewPort);
+		renderer.render();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
-		img.dispose();
+		manager.dispose();
 	}
 }
