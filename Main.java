@@ -1,3 +1,3 @@
-pulbic static void main(String[] args, int arc){
+public static void main(String[] args, int arc){
 
 }
