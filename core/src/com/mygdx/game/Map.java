@@ -23,10 +23,10 @@ public class Map extends ApplicationAdapter {
     public void create () {
         manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader());
-        manager.load("core/assets/test_map.tmx", TiledMap.class);
+        manager.load("core/assets/map_v1.tmx", TiledMap.class);
         manager.finishLoading();
 
-        gameMap = manager.get("core/assets/test_map.tmx", TiledMap.class);
+        gameMap = manager.get("core/assets/map_v1.tmx", TiledMap.class);
 
         MapProperties properties = gameMap.getProperties();
         TILEWIDTH = properties.get("tilewidth", Integer.class);
@@ -36,9 +36,9 @@ public class Map extends ApplicationAdapter {
         MAPWIDTH_PIXELS = MAPWIDTH_TILES * TILEWIDTH;
         MAPHEIGHT_PIXELS = MAPHEIGHT_TILES * TILEHEIGHT;
 
-        viewPort = new OrthographicCamera(960.f, 540.f);
-        viewPort.position.x = MAPWIDTH_PIXELS * 0.5f;
-        viewPort.position.y = MAPHEIGHT_PIXELS * 0.5f;
+        viewPort = new OrthographicCamera(480.f, 270.f);
+        viewPort.position.x = MAPWIDTH_PIXELS * 0.4f;
+        viewPort.position.y = MAPHEIGHT_PIXELS * 0.85f;
 
         renderer = new OrthogonalTiledMapRenderer(gameMap);
     }
