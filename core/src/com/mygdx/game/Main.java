@@ -12,49 +12,20 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class Main extends ApplicationAdapter {
 
-	private TiledMap gameMap;
-	private AssetManager manager;
-	private OrthographicCamera viewPort;
-	private OrthogonalTiledMapRenderer renderer;
+	Map map = new Map();
 
-	private int TILEWIDTH, TILEHEIGHT, MAPWIDTH_TILES, MAPHEIGHT_TILES, MAPWIDTH_PIXELS, MAPHEIGHT_PIXELS;
-	
 	@Override
 	public void create () {
-		manager = new AssetManager();
-		manager.setLoader(TiledMap.class, new TmxMapLoader());
-		manager.load("core/assets/test_map.tmx", TiledMap.class);
-		manager.finishLoading();
-
-		gameMap = manager.get("core/assets/test_map.tmx", TiledMap.class);
-
-		MapProperties properties = gameMap.getProperties();
-		TILEWIDTH = properties.get("tilewidth", Integer.class);
-		TILEHEIGHT = properties.get("tileheight", Integer.class);
-		MAPWIDTH_TILES = properties.get("width", Integer.class);
-		MAPHEIGHT_TILES = properties.get("height", Integer.class);
-		MAPWIDTH_PIXELS = MAPWIDTH_TILES * TILEWIDTH;
-		MAPHEIGHT_PIXELS = MAPHEIGHT_TILES * TILEHEIGHT;
-
-		viewPort = new OrthographicCamera(960.f, 540.f);
-		viewPort.position.x = MAPWIDTH_PIXELS * 0.5f;
-		viewPort.position.y = MAPHEIGHT_PIXELS * 0.5f;
-
-		renderer = new OrthogonalTiledMapRenderer(gameMap);
+		map.create();
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(.5f, .7f, .9f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		viewPort.update();
-		renderer.setView(viewPort);
-		renderer.render();
+		map.render();
 	}
 	
 	@Override
 	public void dispose () {
-		manager.dispose();
+		map.dispose();
 	}
 }
