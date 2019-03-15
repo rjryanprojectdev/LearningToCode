@@ -16,7 +16,28 @@ public class Player {
         }
 
         public void update (float delta){
+            // update player movement
+            if (RIGHT_TOUCHED) {
+                x += speed * delta;
+            }
+            if (LEFT_TOUCHED) {
+                x -= speed * delta;
+            }
+            if (UP_TOUCHED){
+                y += speed * delta;
+            }
+            if (DOWN_TOUCHED){
+                y -= speed * delta;
+            }
 
+            // set ship texture:
+            if (UP_TOUCHED == true && DOWN_TOUCHED == false) {
+                ship = player_up;
+            } else if (DOWN_TOUCHED == true && UP_TOUCHED == false) {
+                ship = player_down;
+            } else {
+                ship = player_down;
+            }
         }
 
         public void render (SpriteBatch sb){
