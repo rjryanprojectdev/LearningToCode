@@ -36,7 +36,7 @@ public class Map extends ApplicationAdapter {
         MAPWIDTH_PIXELS = MAPWIDTH_TILES * TILEWIDTH;
         MAPHEIGHT_PIXELS = MAPHEIGHT_TILES * TILEHEIGHT;
 
-        viewPort = new OrthographicCamera(480.f, 270.f);
+        viewPort = new OrthographicCamera(960.f, 540.f);
         viewPort.position.x = MAPWIDTH_PIXELS * 0.4f;
         viewPort.position.y = MAPHEIGHT_PIXELS * 0.85f;
 
