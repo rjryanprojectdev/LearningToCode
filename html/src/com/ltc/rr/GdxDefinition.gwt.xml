@@ -8,11 +8,8 @@
 	<inherits name='com.badlogic.gdx.ai' />
 	<inherits name='com.badlogic.gdx.controllers.controllers-gwt' />
 
-    <inherits name='com.mygdx.game.GdxDefinition' />
-    
-    <collapse-all-properties />
-    
-	<add-linker name="xsiframe"/>	
-	<set-configuration-property name="devModeRedirectEnabled" value="true"/>
-	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>	
+	<inherits name='Main' />
+	<entry-point class='com.ltc.rr.client.HtmlLauncher' />
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+	<set-configuration-property name="gdx.assetpath" value="../core/assets" />
 </module>

@@ -1,11 +1,11 @@
-package com.mygdx.game;
+package com.ltc.rr;
 
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;
 
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.mygdx.game.Main;
+import com.ltc.rr.Main;
 
 public class IOSLauncher extends IOSApplication.Delegate {
     @Override

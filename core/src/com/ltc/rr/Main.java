@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.ltc.rr;
 
 
 import com.badlogic.gdx.ApplicationAdapter;
