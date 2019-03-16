@@ -14,10 +14,10 @@ public class Map extends ApplicationAdapter {
 
     private TiledMap gameMap;
     private AssetManager manager;
-    public OrthographicCamera viewPort;
-    public OrthogonalTiledMapRenderer renderer;
+    private OrthographicCamera viewPort;
+    private OrthogonalTiledMapRenderer renderer;
 
-    public int TILEWIDTH, TILEHEIGHT, MAPWIDTH_TILES, MAPHEIGHT_TILES, MAPWIDTH_PIXELS, MAPHEIGHT_PIXELS;
+    private int TILEWIDTH, TILEHEIGHT, MAPWIDTH_TILES, MAPHEIGHT_TILES, MAPWIDTH_PIXELS, MAPHEIGHT_PIXELS;
 
     @Override
     public void create () {
@@ -49,6 +49,7 @@ public class Map extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         viewPort.update();
+        renderer.setView(viewPort);
         renderer.render();
     }
 
