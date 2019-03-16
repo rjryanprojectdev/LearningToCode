@@ -10,15 +10,16 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-public class Map {
+public class Map extends ApplicationAdapter {
 
     private TiledMap gameMap;
     private AssetManager manager;
-    private OrthogonalTiledMapRenderer renderer;
-    private OrthographicCamera viewPort;
+    public OrthographicCamera viewPort;
+    public OrthogonalTiledMapRenderer renderer;
 
-    private int tileWidth, tileHeight, mapWidth_Tiles, mapHeight_Tiles, mapWidth_Pixels,  mapHeight_Pixels;
+    public int TILEWIDTH, TILEHEIGHT, MAPWIDTH_TILES, MAPHEIGHT_TILES, MAPWIDTH_PIXELS, MAPHEIGHT_PIXELS;
 
+    @Override
     public void create () {
         manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader());
@@ -28,42 +29,31 @@ public class Map {
         gameMap = manager.get("core/assets/map_v1.tmx", TiledMap.class);
 
         MapProperties properties = gameMap.getProperties();
-        tileWidth = properties.get("tilewidth", Integer.class);
-        tileHeight = properties.get("tileheight", Integer.class);
-        mapWidth_Tiles = properties.get("width", Integer.class);
-        mapHeight_Tiles = properties.get("height", Integer.class);
-        mapWidth_Pixels = mapWidth_Tiles * tileWidth;
-        mapHeight_Pixels = mapHeight_Tiles * tileHeight;
+        TILEWIDTH = properties.get("tilewidth", Integer.class);
+        TILEHEIGHT = properties.get("tileheight", Integer.class);
+        MAPWIDTH_TILES = properties.get("width", Integer.class);
+        MAPHEIGHT_TILES = properties.get("height", Integer.class);
+        MAPWIDTH_PIXELS = MAPWIDTH_TILES * TILEWIDTH;
+        MAPHEIGHT_PIXELS = MAPHEIGHT_TILES * TILEHEIGHT;
+
+        viewPort = new OrthographicCamera(480.f, 270.f);
+        viewPort.position.x = MAPWIDTH_PIXELS * 0.4f;
+        viewPort.position.y = MAPHEIGHT_PIXELS * 0.85f;
 
         renderer = new OrthogonalTiledMapRenderer(gameMap);
-
-
-
-        viewPort = new OrthographicCamera(960.f, 540.f);
-        viewPort.position.x = mapWidth_Pixels * 0.4f;
-        viewPort.position.y = mapHeight_Pixels * 0.85f;
     }
 
+    @Override
     public void render () {
         Gdx.gl.glClearColor(.5f, .7f, .9f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        renderer.setView(viewPort);
-        renderer.render();
-
         viewPort.update();
+        renderer.render();
     }
 
+    @Override
     public void dispose () {
         manager.dispose();
-        renderer.dispose();
-    }
-
-    public int getWidthPixels() {
-        return mapWidth_Pixels;
-    }
-
-    public int getHeightPixels() {
-        return mapHeight_Pixels;
     }
 }
