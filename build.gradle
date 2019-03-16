@@ -49,12 +49,12 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
-        compile "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:1.2.5"
         compile "de.tomgrill.gdxfacebook:gdx-facebook-desktop:1.4.1"
+        compile "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:1.2.5"
         
     }
 }
@@ -72,8 +72,8 @@ project(":ios") {
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-ios"
         compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-ios"
-        compile "de.tomgrill.gdxdialogs:gdx-dialogs-ios:1.2.5"
         compile "de.tomgrill.gdxfacebook:gdx-facebook-ios:1.4.1"
+        compile "de.tomgrill.gdxdialogs:gdx-dialogs-ios:1.2.5"
         
     }
 }
@@ -96,11 +96,11 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion:sources"
+        compile "de.tomgrill.gdxfacebook:gdx-facebook-core:1.4.1:sources"
+        compile "de.tomgrill.gdxfacebook:gdx-facebook-html:1.4.1:sources"
         compile "de.tomgrill.gdxdialogs:gdx-dialogs-html:1.2.5"
         compile "de.tomgrill.gdxdialogs:gdx-dialogs-html:1.2.5:sources"
         compile "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.2.5:sources"
-        compile "de.tomgrill.gdxfacebook:gdx-facebook-core:1.4.1:sources"
-        compile "de.tomgrill.gdxfacebook:gdx-facebook-html:1.4.1:sources"
         
     }
 }
@@ -117,8 +117,8 @@ project(":core") {
         compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
         compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-        compile "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.2.5"
         compile "de.tomgrill.gdxfacebook:gdx-facebook-core:1.4.1"
+        compile "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.2.5"
         
     }
 }
