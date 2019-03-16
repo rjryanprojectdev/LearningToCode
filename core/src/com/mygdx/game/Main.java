@@ -26,8 +26,6 @@ public class Main extends ApplicationAdapter {
 	public void create () {
 		map.create();
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false,map.TILEWIDTH,map.TILEHEIGHT);
-
 	}
 
 	@Override
